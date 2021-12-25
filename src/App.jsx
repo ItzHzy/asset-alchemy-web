@@ -1,4 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
 
-ReactDOM.render(<h1>Hello world!</h1>, document.querySelector("body"));
+//FIXME: shouldn't render components into body
+ReactDOM.render(
+    <h1 className="text-6xl">Hello world!</h1>,
+    document.querySelector('body'),
+)
