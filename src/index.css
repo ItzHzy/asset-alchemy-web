@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.neutral-200 {
+    background-color: #d7d7d8;
+    color: #d7d7d8;
+}
+
+.neutral-300 {
+    background-color: #cbd0d2;
+    color: #cbd0d2;
+}
+
+.neutral-400 {
+    background-color: #adb5bd;
+    color: #adb5bd;
+}
+
+.neutral-500 {
+    background-color: #6e7b87;
+    color: #6e7b87;
+}
+
+.neutral-600 {
+    background-color: #47535c;
+    color: #47535c;
+}
+
+.neutral-700 {
+    background-color: #2a3339;
+    color: #2a3339;
+}
+
+.neutral-800 {
+    background-color: #191f23;
+    color: #191f23;
+}
+
+.primary-200 {
+    background-color: #dfdbff;
+    color: #dfdbff;
+}
+
+.primary-300 {
+    background-color: #d0caff;
+    color: #d0caff;
+}
+
+.primary-400 {
+    background-color: #c0b8ff;
+    color: #c0b8ff;
+}
+
+.primary-500 {
+    background-color: #b0a6ff;
+    color: #b0a6ff;
+}
+
+.primary-600 {
+    background-color: #9e95e6;
+    color: #9e95e6;
+}
+
+.primary-700 {
+    background-color: #8d85cc;
+    color: #8d85cc;
+}
+
+.primary-800 {
+    background-color: #7b74b3;
+    color: #7b74b3;
+}
+
+.semantic-success {
+    background-color: #339933;
+    color: #339933;
+}
+
+.semantic-error {
+    background-color: #e01a4f;
+    color: #e01a4f;
+}
+
+.semantic-link {
+    background-color: #08a0e9;
+    color: #08a0e9;
+}
