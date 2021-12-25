@@ -4,6 +4,6 @@ import './index.css'
 
 //FIXME: shouldn't render components into body
 ReactDOM.render(
-    <h1 className="text-6xl">Hello world!</h1>,
+    <h1 className="h4">Hello world!</h1>,
     document.querySelector('body'),
 )

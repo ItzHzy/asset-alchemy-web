@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
 .neutral-200 {
     background-color: #d7d7d8;
     color: #d7d7d8;
@@ -85,4 +87,64 @@
 .semantic-link {
     background-color: #08a0e9;
     color: #08a0e9;
+}
+
+.h1 {
+    font-family: 'Nunito';
+    font-size: 96px;
+    font-weight: 300;
+}
+
+.h2 {
+    font-family: 'Nunito';
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.h3 {
+    font-family: 'Nunito';
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.h4 {
+    font-family: 'Nunito';
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.h5 {
+    font-family: 'Nunito';
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.h6 {
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.s1 {
+    font-family: 'Nunito';
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.s2 {
+    font-family: 'Nunito';
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.body {
+    font-family: 'Nunito';
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.button {
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: 700;
 }
