@@ -1,9 +1,29 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
+import { Helmet } from 'react-helmet'
+import { Routes, Route, Link } from 'react-router-dom'
+import TitleBar from './components/TitleBar'
+import Home from './Home'
 
-//FIXME: shouldn't render components into body
-ReactDOM.render(
-    <h1 className="h4">Hello world!</h1>,
-    document.querySelector('body'),
-)
+//TODO: remove Helmet dependency and use html template instead
+function App() {
+    return (
+        <div className="h-screen w-screen">
+            <Helmet>
+                <script
+                    src="https://kit.fontawesome.com/ec029e1dde.js"
+                    crossorigin="anonymous"
+                ></script>
+            </Helmet>
+            <TitleBar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </div>
+    )
+}
+
+function Nav() {
+    return <div className=""></div>
+}
+
+export default App
