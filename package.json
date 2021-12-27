@@ -3,11 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "repository": "https://gitlab.com/aespr/asset-alchemy-web.git",
-    "main": "src/App.js",
+    "main": "src/index.js",
     "scripts": {
         "build": "webpack",
-        "start": "webpack-dev-server",
-        "css": "postcss src/index.css -o dist/index.css"
+        "start": "webpack-dev-server"
     },
     "author": "",
     "license": "ISC",
@@ -28,6 +27,8 @@
     },
     "dependencies": {
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "react-helmet": "^6.1.0",
+        "react-router-dom": "^6.2.1"
     }
 }

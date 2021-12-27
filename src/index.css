@@ -4,38 +4,70 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
+/*TODO: seperate text color and background color styles*/
+/*TODO: add leading-none to all text styles*/
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-color: #191f23;
+}
+
 .neutral-200 {
     background-color: #d7d7d8;
+}
+
+.text-neutral-200 {
     color: #d7d7d8;
 }
 
 .neutral-300 {
     background-color: #cbd0d2;
+}
+
+.text-neutral-300 {
     color: #cbd0d2;
 }
 
 .neutral-400 {
     background-color: #adb5bd;
+}
+
+.text-neutral-400 {
     color: #adb5bd;
 }
 
 .neutral-500 {
     background-color: #6e7b87;
+}
+
+.text-neutral-500 {
     color: #6e7b87;
 }
 
 .neutral-600 {
     background-color: #47535c;
+}
+
+.text-neutral-600 {
     color: #47535c;
 }
 
 .neutral-700 {
     background-color: #2a3339;
+}
+
+.text-neutral-700 {
     color: #2a3339;
 }
 
 .neutral-800 {
     background-color: #191f23;
+}
+
+.text-neutral-800 {
     color: #191f23;
 }
 
@@ -56,6 +88,9 @@
 
 .primary-500 {
     background-color: #b0a6ff;
+}
+
+.text-primary-500 {
     color: #b0a6ff;
 }
 
@@ -76,12 +111,10 @@
 
 .semantic-success {
     background-color: #339933;
-    color: #339933;
 }
 
 .semantic-error {
-    background-color: #e01a4f;
-    color: #e01a4f;
+    background-color: #d00000;
 }
 
 .semantic-link {
@@ -137,13 +170,13 @@
     font-weight: 600;
 }
 
-.body {
+.text-body {
     font-family: 'Nunito';
     font-size: 16px;
     font-weight: 400;
 }
 
-.button {
+.text-button {
     font-family: 'Nunito';
     font-size: 20px;
     font-weight: 700;

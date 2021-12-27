@@ -2,7 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Routes, Route, Link } from 'react-router-dom'
 import TitleBar from './components/TitleBar'
-import Home from './Home'
+import Nav from './components/Nav'
+import Feed from './Feed'
 
 //TODO: remove Helmet dependency and use html template instead
 function App() {
@@ -15,15 +16,16 @@ function App() {
                 ></script>
             </Helmet>
             <TitleBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-            </Routes>
+            <div className="flex justify-center mt-[69px] h-full w-full">
+                <Nav />
+                <Routes>
+                    <Route path="*" element={<Feed />} />
+                    <Route path="/" element={<Feed />} />
+                </Routes>
+                <div className="h-full w-[181px] ml-10px"></div>
+            </div>
         </div>
     )
-}
-
-function Nav() {
-    return <div className=""></div>
 }
 
 export default App
