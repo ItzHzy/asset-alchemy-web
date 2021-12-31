@@ -8,7 +8,7 @@ function Nav() {
         <div className="flex flex-col justify-between pl-[20px] pt-[15px] pb-[15px] h-[222px] w-[181px] mr-[10px]">
             <Tab path="/" icon="fas fa-home" label="Home" current={true} />
             <Tab
-                path="/explore"
+                path="/explore?q=hi"
                 icon="fas fa-globe"
                 label="Explore"
                 current={false}

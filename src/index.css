@@ -6,6 +6,7 @@
 
 /*TODO: seperate text color and background color styles*/
 /*TODO: add leading-none to all text styles*/
+/* TODO: transfer styles to tailwind config*/
 html {
     height: 100%;
 }
@@ -15,168 +16,81 @@ body {
     background-color: #191f23;
 }
 
-.neutral-200 {
-    background-color: #d7d7d8;
-}
-
-.text-neutral-200 {
-    color: #d7d7d8;
-}
-
-.neutral-300 {
-    background-color: #cbd0d2;
-}
-
-.text-neutral-300 {
-    color: #cbd0d2;
-}
-
-.neutral-400 {
-    background-color: #adb5bd;
-}
-
-.text-neutral-400 {
-    color: #adb5bd;
-}
-
-.neutral-500 {
-    background-color: #6e7b87;
-}
-
-.text-neutral-500 {
-    color: #6e7b87;
-}
-
-.neutral-600 {
-    background-color: #47535c;
-}
-
-.text-neutral-600 {
-    color: #47535c;
-}
-
-.neutral-700 {
-    background-color: #2a3339;
-}
-
-.text-neutral-700 {
-    color: #2a3339;
-}
-
-.neutral-800 {
-    background-color: #191f23;
-}
-
-.text-neutral-800 {
-    color: #191f23;
-}
-
-.primary-200 {
-    background-color: #dfdbff;
-    color: #dfdbff;
-}
-
-.primary-300 {
-    background-color: #d0caff;
-    color: #d0caff;
-}
-
-.primary-400 {
-    background-color: #c0b8ff;
-    color: #c0b8ff;
-}
-
-.primary-500 {
-    background-color: #b0a6ff;
-}
-
-.text-primary-500 {
-    color: #b0a6ff;
-}
-
-.primary-600 {
-    background-color: #9e95e6;
-    color: #9e95e6;
-}
-
-.primary-700 {
-    background-color: #8d85cc;
-    color: #8d85cc;
-}
-
-.primary-800 {
-    background-color: #7b74b3;
-    color: #7b74b3;
-}
-
-.semantic-success {
-    background-color: #339933;
-}
-
-.semantic-error {
-    background-color: #d00000;
-}
-
-.semantic-link {
-    background-color: #08a0e9;
-    color: #08a0e9;
-}
-
 .h1 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 96px;
     font-weight: 300;
 }
 
 .h2 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 60px;
     font-weight: 300;
 }
 
 .h3 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 48px;
     font-weight: 400;
 }
 
 .h4 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 34px;
     font-weight: 400;
 }
 
 .h5 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 24px;
     font-weight: 400;
 }
 
 .h6 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 20px;
     font-weight: 600;
 }
 
 .s1 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 16px;
     font-weight: 400;
 }
 
 .s2 {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 14px;
     font-weight: 600;
 }
 
 .text-body {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 16px;
     font-weight: 400;
 }
 
 .text-button {
+    @apply align-middle;
+    @apply leading-none;
     font-family: 'Nunito';
     font-size: 20px;
     font-weight: 700;

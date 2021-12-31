@@ -59,6 +59,7 @@ const data = [
         ],
     },
 ]
+
 const summary =
     'The Internet Association has fought for tech\'s interests in Washington for the last nine years, lobbying lawmakers to advance the combined interests of Facebook, Amazon, Google, Airbnb, Uber, Twitter, Ebay, Spotify, Zillow and many more of the most recognizable names in tech, from the largest companies on down."Our industry has undergone tremendous growth and change since the Internet Association was formed almost 10 years ago, and in line with this evolution, the Board has made the difficult decision to close the organization at the end of this year," the group wrote in a published statement.'
 

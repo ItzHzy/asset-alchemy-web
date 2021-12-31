@@ -4,7 +4,7 @@ import React from 'react'
 // TODO: align catalyst type icons
 function Catalyst(props) {
     return (
-        <div className="flex w-[450px] min-h-[85px] h-auto neutral-700 mb-[10px] rounded-[5px]">
+        <div className="flex w-[450px] min-h-[85px] h-auto bg-neutral-700 mb-[10px] rounded-[5px]">
             <div className="flex justify-center items-start pt-[10px] h-full w-[45px]">
                 <div className="h-[16px] w-[16px]">
                     <i
@@ -21,10 +21,10 @@ function Catalyst(props) {
                         <i className="fab fa-twitter text-neutral-400 font-[16px]" />
                     </div>
                 </div>
-                <span className="min-h-min w-full h6 text-neutral-300">
+                <span className="w-full min-h-min h6 text-neutral-300">
                     {props.title}
                 </span>
-                <div className="min-h-min w-full flex flex-row flex-wrap">
+                <div className="flex flex-row flex-wrap w-full min-h-min">
                     {props.deltas.map((delta) => (
                         <Delta ticker={delta.ticker} change={delta.change} />
                     ))}
@@ -39,7 +39,7 @@ function Delta(props) {
         <div
             className={
                 'flex items-center h-[20px] min-w-min rounded-[5px] px-[5px] mr-[12px] mb-[6px] ' +
-                (props.change > 0 ? 'semantic-success' : 'semantic-error')
+                (props.change > 0 ? 'bg-success' : 'bg-error')
             }
         >
             <span
