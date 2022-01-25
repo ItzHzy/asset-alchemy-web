@@ -1,0 +1,11 @@
+node_modules
+dist
+.eslintrc
+.eslintingnore
+.git
+.gitingore
+.prettierrc
+.prettierignore
+README.txt
+.env
+.env.example

@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 //FIXME: dropdowns aren't vertically centered in their div
 function Dropdown(props) {
-    const [open, setState] = useState(false)
+    const [opened, setState] = useState(false)
 
-    console.log(props.options)
     return (
-        <div className="flex flex-col gap-1 ">
+        <div
+            className="flex flex-col gap-1 select-none"
+            onBlur={() => setState(false)}
+            onFocus={() => setState(true)}
+            tabIndex="0"
+        >
             <div
                 className={
                     'flex items-center px-1 h-2 min-w-[90px] rounded bg-neutral-700 hover:cursor-pointer justify-between' +
-                    (open ? ' border-[1px] border-neutral-600' : '')
+                    (opened ? ' border-[1px] border-neutral-600' : '')
                 }
-                onClick={() => (open ? setState(false) : setState(true))}
+                onClick={() => (opened ? setState(false) : setState(true))}
             >
                 <span className="text-neutral-400 text-body mr-05">
                     {props.current}
                 </span>
                 <i
                     className={
-                        (open ? 'fas fa-caret-up' : 'fas fa-caret-down') +
+                        (opened ? 'fas fa-caret-up' : 'fas fa-caret-down') +
                         ' text-[20px] text-neutral-400'
                     }
                 />
@@ -27,24 +31,18 @@ function Dropdown(props) {
             <div
                 className={
                     'relative flex flex-col px-10 z-10 min-w-min min-h-min bg-neutral-700 gap-05 p-05 rounded hover:cursor-pointer items-left' +
-                    (open ? '' : ' hidden')
+                    (opened ? '' : ' hidden')
                 }
             >
                 {props.options.map((option) => (
                     <Option
+                        key={option}
                         label={option}
                         setState={setState}
                         setOption={props.setOption}
                     />
                 ))}
             </div>
-            <div
-                className={
-                    'absolute top-0 left-0 w-screen h-screen z-5' +
-                    (open ? '' : ' hidden')
-                }
-                onClick={() => setState(false)}
-            ></div>
         </div>
     )
 }

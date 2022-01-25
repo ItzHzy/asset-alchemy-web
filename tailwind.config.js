@@ -15,6 +15,7 @@ module.exports = {
             8: '90px',
         },
         colors: {
+            white: '#FAF9F6',
             primary: {
                 200: '#dfdbff',
                 300: '#dfdbff',
@@ -37,8 +38,9 @@ module.exports = {
             error: '#E01A4F',
             link: '#08A0E9',
         },
-        rounded: '5px',
-        extend: {},
+        extend: {
+            rounded: '5px',
+        },
     },
     plugins: [],
 }
