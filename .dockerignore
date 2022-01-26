@@ -1,5 +1,5 @@
 node_modules
-dist
+build
 .eslintrc
 .eslintingnore
 .git
@@ -9,3 +9,8 @@ dist
 README.txt
 .env
 .env.example
+.DS_STORE
+cloudbuild.*
+.dockerignore
+Dockerfile
+.vscode
