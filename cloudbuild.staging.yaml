@@ -7,7 +7,7 @@ steps:
           - 'gcr.io/$PROJECT_ID/asset-alchemy-web:$COMMIT_SHA'
           - '--build-arg=AUTH0_DOMAIN=asset-alchemy-staging.us.auth0.com'
           - '--build-arg=AUTH0_CLIENT_ID=wDnWZF1WjTJbOYgcAPUgMfr6kf3pdsqV'
-          - '--build-arg=AUTH0_REDIRECT_URL=https://staging.app.assetalchemy.io'
+          - '--build-arg=AUTH0_REDIRECT_URI=https://staging.app.assetalchemy.io'
           - '--build-arg=API_SERVER_URL=https://staging.api.assetalchemy.io'
           - '.'
     # Push the container image to Container Registry
