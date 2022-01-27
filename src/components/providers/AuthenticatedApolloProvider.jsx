@@ -13,10 +13,7 @@ const AuthenticatedApolloProvider = ({ children }) => {
     const { getAccessTokenSilently } = useAuth0()
 
     const httpLink = createHttpLink({
-        uri: process.env.API_SERVER_URL, // your URI here...
-        fetchOptions: {
-            mode: 'no-cors',
-        },
+        uri: process.env.API_SERVER_URL,
     })
 
     const authLink = setContext(async () => {
