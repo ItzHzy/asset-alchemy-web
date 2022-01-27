@@ -12,25 +12,38 @@ import { useAuth0 } from '@auth0/auth0-react'
 const AuthenticatedApolloProvider = ({ children }) => {
     const { getAccessTokenSilently } = useAuth0()
 
+    const enchancedFetch = async (url, init) => {
+        const token = await getAccessTokenSilently()
+        return fetch(url, {
+            ...init,
+            headers: {
+                ...init.headers,
+                'Access-Control-Allow-Origin': '*',
+                ...(token && { authorization: `Bearer ${token}` }),
+            },
+        }).then((response) => response)
+    }
+
     const httpLink = createHttpLink({
         uri: process.env.API_SERVER_URL,
         fetchOptions: {
-            mode: 'no-cors',
+            mode: 'cors',
         },
+        fetch: enchancedFetch,
     })
 
-    const authLink = setContext(async () => {
-        const token = await getAccessTokenSilently()
+    // const authLink = setContext(async () => {
+    //     const token =
 
-        return {
-            headers: {
-                authorization: `Bearer ${token}`,
-            },
-        }
-    })
+    //     return {
+    //         headers: {
+    //             authorization: `Bearer ${token}`,
+    //         },
+    //     }
+    // })
 
     const apolloClient = new ApolloClient({
-        link: authLink.concat(httpLink),
+        link: httpLink,
         cache: new InMemoryCache(),
     })
 
