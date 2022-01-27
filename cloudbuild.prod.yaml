@@ -7,7 +7,7 @@ steps:
           - 'gcr.io/$PROJECT_ID/asset-alchemy-web:$COMMIT_SHA'
           - '--build-arg=AUTH0_DOMAIN=asset-alchemy.us.auth0.com'
           - '--build-arg=AUTH0_CLIENT_ID=KQM98rreQSVH9xiz57ywiryjT5O0gX5f'
-          - '--build-arg=AUTH0_REDIRECT_URL=https://app.assetalchemy.io'
+          - '--build-arg=AUTH0_REDIRECT_URI=https://app.assetalchemy.io'
           - '--build-arg=API_SERVER_URL=https://api.assetalchemy.io'
           - '.'
     # Push the container image to Container Registry
