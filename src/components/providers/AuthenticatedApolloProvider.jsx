@@ -14,6 +14,9 @@ const AuthenticatedApolloProvider = ({ children }) => {
 
     const httpLink = createHttpLink({
         uri: process.env.API_SERVER_URL,
+        fetchOptions: {
+            mode: 'no-cors',
+        },
     })
 
     const authLink = setContext(async () => {
