@@ -22,6 +22,7 @@ const AuthenticatedApolloProvider = ({ children }) => {
         return {
             headers: {
                 authorization: `Bearer ${token}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }
     })
