@@ -36,7 +36,7 @@ function Search() {
     if (error) {
         console.log(error)
 
-        return <h1>wtf</h1>
+        return <h1>Error</h1>
     }
 
     if (loading) {

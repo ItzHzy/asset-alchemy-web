@@ -98,6 +98,15 @@ function CompanyResult(props) {
         unfollowCompanyMutation.error ||
         auth.error
     ) {
+        console.log(
+            isFollowingQuery.error +
+                '\n' +
+                followCompanyMutation.error +
+                '\n' +
+                unfollowCompanyMutation.error +
+                '\n' +
+                auth.error,
+        )
         return <span className="text-error">Error</span>
     }
 
