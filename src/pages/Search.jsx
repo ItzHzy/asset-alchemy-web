@@ -7,8 +7,6 @@ import { ClipLoader } from 'react-spinners'
 import CompanyResult from '../components/common/CompanyItem'
 import Loading from './Loading'
 
-// TODO : set all margin to be multiples of 10
-
 const data = []
 
 const stories = []

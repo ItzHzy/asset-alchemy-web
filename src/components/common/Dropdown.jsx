@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 
-//FIXME: dropdowns aren't vertically centered in their div
 function Dropdown(props) {
     const [opened, setState] = useState(false)
 

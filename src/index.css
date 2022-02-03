@@ -4,9 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
-/*TODO: seperate text color and background color styles*/
-/*TODO: add leading-none to all text styles*/
-/* TODO: transfer styles to tailwind config*/
 html {
     height: 100%;
 }
@@ -98,9 +95,6 @@ body {
     font-family: 'Nunito';
     font-size: 20px;
     font-weight: 700;
-}
-
-.recharts-layer .recharts-cartesian-axis .recharts-yAxis:first .yAxis {
 }
 
 .recharts-yAxis

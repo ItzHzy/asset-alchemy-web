@@ -17,13 +17,13 @@ module.exports = {
         colors: {
             white: '#FAF9F6',
             primary: {
-                200: '#dfdbff',
-                300: '#dfdbff',
-                400: '#c0b8ff',
-                500: '#b0a6ff',
-                600: '#9e95e6',
-                700: '#8d85cc',
-                800: '#7b74b3',
+                200: '#ffb870',
+                300: '#ffad5c',
+                400: '#ffa347',
+                500: '#ff9933',
+                600: '#e68a2e',
+                700: '#cc7a29',
+                800: '#b36b24',
             },
             neutral: {
                 200: '#D7D7D8',

@@ -5,8 +5,6 @@ import { faTwitter as fabTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faNewspaper as fasNewspaper } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 
-// TODO: add icon buttons as a component
-// TODO: align catalyst type icons
 function NewsItem(props) {
     return (
         <div className="flex w-[450px] min-h-[85px] h-auto bg-neutral-700 rounded">

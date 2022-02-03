@@ -9,7 +9,7 @@ function PriceChart(props) {
             <Line
                 type="monotone"
                 dataKey="close"
-                stroke="#8884d8"
+                stroke="#ff9933"
                 dot={false}
             />
         </LineChart>

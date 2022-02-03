@@ -6,8 +6,6 @@ import NewsItem from '../components/common/NewsItem'
 import { ClipLoader } from 'react-spinners'
 import Loading from './Loading'
 
-//TODO: remove upcoming widget in design and code
-//TODO: fake this data at the backend
 const GET_FEED = gql`
     query GET_FEED($userId: String) {
         getFeed(userId: $userId) {

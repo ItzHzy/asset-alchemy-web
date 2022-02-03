@@ -244,7 +244,7 @@ function Financials(props) {
 
 function TabSelector(props) {
     return (
-        <div className="flex justify-between w-full h-4 border-b-2 border-neutral-500">
+        <div className="flex justify-between w-full h-4 px-1 border-b-2 border-neutral-500">
             {props.tabs.map((label, index) => (
                 <Tab
                     key={label}
@@ -261,7 +261,7 @@ function TabSelector(props) {
 function Tab(props) {
     const styles =
         props.current == props.value
-            ? 'flex items-center h5 text-neutral-400 border-b-4 border-neutral-400 hover:cursor-pointer'
+            ? 'flex items-center h5 text-neutral-400 border-b-4 border-primary-400 hover:cursor-pointer'
             : 'flex items-center h5 text-neutral-500 hover:cursor-pointer'
     return (
         <div

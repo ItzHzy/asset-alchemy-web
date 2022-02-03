@@ -5,7 +5,6 @@ import Search from './pages/Search'
 import Following from './pages/Following'
 import Company from './pages/Company'
 
-//TODO: remove Helmet dependency and use html template instead
 function App() {
     return (
         <Routes>
