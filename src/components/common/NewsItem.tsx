@@ -5,7 +5,14 @@ import { faTwitter as fabTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faNewspaper as fasNewspaper } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 
-function NewsItem(props) {
+export interface NewsItemProps {
+    time: string
+    day: string
+    headline: string
+    related: Array<{ ticker: string; dailyDelta: number }>
+}
+
+function NewsItem(props: NewsItemProps) {
     return (
         <div className="flex w-[450px] min-h-[85px] h-auto bg-neutral-700 rounded">
             <div className="flex justify-center items-start pt-[5px] h-full w-[45px]">
@@ -21,7 +28,6 @@ function NewsItem(props) {
                     <p className="s2 text-neutral-400">
                         {props.time + ' • ' + props.day}
                     </p>
-                    {/* <FontAwesomeIcon icon={fabTwitter} size="lg" color="" /> */}
                 </div>
                 <span className="w-full min-h-min h6 text-neutral-300">
                     {props.headline}
@@ -44,7 +50,12 @@ function NewsItem(props) {
     )
 }
 
-function Delta(props) {
+interface DeltaProps {
+    ticker: string
+    dailyDelta: number
+}
+
+function Delta(props: DeltaProps) {
     const navigate = useNavigate()
     return (
         <div

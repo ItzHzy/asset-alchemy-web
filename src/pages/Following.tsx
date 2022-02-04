@@ -1,9 +1,8 @@
 import React from 'react'
 import BasicLayout from '../components/layouts/BasicLayout'
-import { ClipLoader } from 'react-spinners'
 import { gql, useQuery } from '@apollo/client'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react'
-import CompanyResult from '../components/common/CompanyItem'
+import CompanyItem, { CompanyItemProps } from '../components/common/CompanyItem'
 import Loading from './Loading'
 
 const GET_FOLLOWING = gql`
@@ -21,13 +20,13 @@ const GET_FOLLOWING = gql`
 function Following() {
     const Auth = useAuth0()
 
-    if (Auth.loading) {
+    if (Auth.isLoading) {
         return <Loading />
     }
 
     const getFollowingQuery = useQuery(GET_FOLLOWING, {
         variables: {
-            userId: Auth.user.sub,
+            userId: Auth.user?.sub,
         },
     })
     if (getFollowingQuery.loading) {
@@ -40,16 +39,18 @@ function Following() {
     return (
         <BasicLayout>
             <div className="flex flex-col items-center h-full w-[530px] p-[10px] gap-2">
-                {getFollowingQuery.data.getFollowing.map((result) => (
-                    <CompanyResult
-                        key={result.ticker}
-                        logo={result.logo}
-                        name={result.name}
-                        ticker={result.ticker}
-                        price={result.price}
-                        dailyDelta={result.dailyDelta}
-                    />
-                ))}
+                {getFollowingQuery.data.getFollowing.map(
+                    (result: CompanyItemProps) => (
+                        <CompanyItem
+                            key={result.ticker}
+                            logo={result.logo}
+                            name={result.name}
+                            ticker={result.ticker}
+                            price={result.price}
+                            dailyDelta={result.dailyDelta}
+                        />
+                    ),
+                )}
             </div>
         </BasicLayout>
     )

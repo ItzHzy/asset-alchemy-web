@@ -1,6 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 
-function Dropdown(props) {
+interface DropdownProps {
+    current: string
+    options: Array<string>
+    setOption: Function
+    setState: Function
+}
+
+function Dropdown(props: DropdownProps): JSX.Element {
     const [opened, setState] = useState(false)
 
     return (
@@ -8,7 +15,7 @@ function Dropdown(props) {
             className="flex flex-col gap-1 select-none"
             onBlur={() => setState(false)}
             onFocus={() => setState(true)}
-            tabIndex="0"
+            tabIndex={0}
         >
             <div
                 className={
@@ -33,7 +40,7 @@ function Dropdown(props) {
                     (opened ? '' : ' hidden')
                 }
             >
-                {props.options.map((option) => (
+                {props.options.map((option: string) => (
                     <Option
                         key={option}
                         label={option}
@@ -46,7 +53,13 @@ function Dropdown(props) {
     )
 }
 
-function Option(props) {
+interface OptionProps {
+    label: string
+    setOption: Function
+    setState: Function
+}
+
+function Option(props: OptionProps): JSX.Element {
     return (
         <div
             className="flex items-center rounded min-w-min min-h-min text-body text-neutral-200 hover:bg-neutral-800 pl-05 p-05"

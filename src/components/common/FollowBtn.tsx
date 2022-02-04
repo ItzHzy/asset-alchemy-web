@@ -24,11 +24,15 @@ const UNFOLLOW_COMPANY = gql`
     }
 `
 
-function FollowBtn(props) {
+interface FollowBtnProps {
+    ticker: string
+}
+
+function FollowBtn(props: FollowBtnProps) {
     const Auth = useAuth0()
     const isFollowingQuery = useQuery(IS_FOLLOWING, {
         variables: {
-            userId: Auth.user.sub,
+            userId: Auth.user?.sub,
             ticker: props.ticker,
         },
         fetchPolicy: 'no-cache',
@@ -43,7 +47,7 @@ function FollowBtn(props) {
         isFollowingQuery.loading ||
         followCompanyMutation.loading ||
         unfollowCompanyMutation.loading ||
-        Auth.loading
+        Auth.isLoading
     ) {
         return <ClipLoader color={'#b0a6ff'} />
     }
@@ -65,7 +69,7 @@ function FollowBtn(props) {
             primaryOnClick={() => {
                 unfollowCompany({
                     variables: {
-                        userId: Auth.user.sub,
+                        userId: Auth.user?.sub,
                         ticker: props.ticker,
                     },
                 })
@@ -74,7 +78,7 @@ function FollowBtn(props) {
             secondaryOnClick={() => {
                 followCompany({
                     variables: {
-                        userId: Auth.user.sub,
+                        userId: Auth.user?.sub,
                         ticker: props.ticker,
                     },
                 })

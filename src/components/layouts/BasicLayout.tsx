@@ -1,14 +1,17 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import {
     Link,
     useSearchParams,
     useNavigate,
     useLocation,
 } from 'react-router-dom'
-import Logo from '../../assets/logo.svg'
 
-function BasicLayout(props) {
+interface BasicLayoutProps {
+    children: JSX.Element
+}
+
+function BasicLayout(props: BasicLayoutProps) {
     return (
         <div className="flex w-full h-full">
             <TitleBar />
@@ -26,7 +29,7 @@ export function TitleBar() {
     const auth = useAuth0()
     return (
         <div className="z-10 fixed top-0 left-0 flex flex-row items-center justify-between h-[70px] w-full bg-neutral-700 px-[50px]">
-            <img src={Logo} alt="Logo" className="w-[250px]" />
+            {/* <img src={Logo} alt="Logo" className="w-[250px]" /> */}
             <SearchBar />
             <p className="text-neutral-500 h5 w-[250px]">
                 {/* Hi,
@@ -40,9 +43,10 @@ export function TitleBar() {
 
 export function SearchBar() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [input, setInput] = useState(
-        searchParams.get('q') ? searchParams.get('q') : '',
-    )
+    const [input, setInput]: [
+        string | null,
+        Dispatch<SetStateAction<string | null>>,
+    ] = useState(searchParams.get('q') ? searchParams.get('q') : '')
 
     const navigate = useNavigate()
 
@@ -52,7 +56,7 @@ export function SearchBar() {
 
     const sort = searchParams.get('sort') ? searchParams.get('sort') : 'Newest'
 
-    function handleKeyDown(event) {
+    function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
             navigate(
                 `/explore/search?q=${input}&range=${range}&sort=${sort}`,
@@ -67,8 +71,10 @@ export function SearchBar() {
             <input
                 className="w-full outline-none bg-neutral-600 text-neutral-400 text-body"
                 placeholder={'Search'}
-                value={input}
-                onInput={(e) => setInput(e.target.value)}
+                value={input?.toString()}
+                onInput={(e) =>
+                    setInput((e.target as HTMLTextAreaElement).value)
+                }
                 onKeyDown={(e) => handleKeyDown(e)}
             />
         </div>
@@ -97,12 +103,18 @@ export function Navigation() {
                 icon="fas fa-calendar-alt"
                 label="Calendar"
             /> */}
-            {/* <Tab path="/settings" icon="fas fa-cog" label="Settings" /> */}
         </div>
     )
 }
 
-export function Tab(props) {
+interface TabProps {
+    label: string
+    mainPath: string
+    icon: string
+    path: string
+}
+
+export function Tab(props: TabProps) {
     const location = useLocation()
     const isCurrent = location.pathname.split('/')[1] == props.mainPath
 

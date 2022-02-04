@@ -1,7 +1,13 @@
 import React from 'react'
 import { LineChart, XAxis, YAxis, Line } from 'recharts'
 
-function PriceChart(props) {
+interface PriceChartProps {
+    height: number
+    width: number
+    data: Array<{}>
+}
+
+function PriceChart(props: PriceChartProps) {
     return (
         <LineChart height={props.height} width={props.width} data={props.data}>
             <XAxis dataKey="date" />

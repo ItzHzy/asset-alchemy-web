@@ -1,7 +1,11 @@
 import React from 'react'
 import { Navigation, TitleBar } from './BasicLayout'
 
-function ExtendedLayout(props) {
+interface ExtendedLayoutProps {
+    children: JSX.Element
+}
+
+function ExtendedLayout(props: ExtendedLayoutProps) {
     return (
         <div className="flex w-full h-full">
             <TitleBar />

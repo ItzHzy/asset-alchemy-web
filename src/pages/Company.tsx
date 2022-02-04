@@ -8,6 +8,12 @@ import PriceChart from '../components/common/PriceChart'
 import ExtendedLayout from '../components/layouts/ExtendedLayout'
 import Loading from './Loading'
 
+interface NewsItemProps {
+    datetime: string
+    headline: string
+    related: Array<{ ticker: string; dailyDelta: number }>
+}
+
 const GET_COMPANY = gql`
     query GET_COMPANY($ticker: String) {
         getCompanyInfo(ticker: $ticker) {
@@ -37,13 +43,13 @@ const GET_COMPANY = gql`
 
 function Company() {
     const pathParams = useParams()
+    const [currentSection, changeSection] = useState(0)
+    const [currentSubsection, changeSubsection] = useState(0) // 0: Most Recent Financials
     const getCompanyQuery = useQuery(GET_COMPANY, {
         variables: {
             ticker: pathParams.ticker,
         },
     })
-    const [currentSection, changeSection] = useState(0)
-    const [currentSubsection, changeSubsection] = useState(0) // 0: Most Recent Financials
 
     if (getCompanyQuery.loading) {
         return <Loading />
@@ -91,10 +97,9 @@ function Company() {
                     <PriceChart height={330} width={670} data={prices} />
                     <div className="flex flex-col items-center gap-1">
                         {news.length != 0 ? (
-                            news.map((result) => (
+                            news.map((result: NewsItemProps) => (
                                 <NewsItem
                                     key={result.headline}
-                                    type="news"
                                     time={new Date(
                                         result.datetime,
                                     ).toLocaleDateString()}
@@ -190,9 +195,19 @@ function Company() {
             </ExtendedLayout>
         )
     }
+
+    return <div></div>
 }
 
-function Header(props) {
+interface HeaderProps {
+    logo: string
+    name: string
+    ticker: string
+    price: number
+    dailyDelta: number
+}
+
+function Header(props: HeaderProps) {
     return (
         <div className="flex flex-row items-center w-full gap-2 h-180 pl-30">
             <img
@@ -212,7 +227,14 @@ function Header(props) {
     )
 }
 
-function Financials(props) {
+interface FinancialsProps {
+    revenue: string
+    operatingIncome: string
+    netIncome: string
+    grossProfit: string
+}
+
+function Financials(props: FinancialsProps) {
     const style =
         'flex justify-between border-b-2 h6 text-neutral-500 border-neutral-500 h-3 items-center'
 
@@ -242,10 +264,16 @@ function Financials(props) {
     )
 }
 
-function TabSelector(props) {
+interface TabSelectorProps {
+    current: number
+    tabs: Array<string>
+    onClick: Function
+}
+
+function TabSelector(props: TabSelectorProps) {
     return (
         <div className="flex justify-between w-full h-4 px-1 border-b-2 border-neutral-500">
-            {props.tabs.map((label, index) => (
+            {props.tabs.map((label: string, index: number) => (
                 <Tab
                     key={label}
                     value={index}
@@ -258,7 +286,14 @@ function TabSelector(props) {
     )
 }
 
-function Tab(props) {
+interface TabProps {
+    current: number
+    value: number
+    onClick: Function
+    label: string
+}
+
+function Tab(props: TabProps) {
     const styles =
         props.current == props.value
             ? 'flex items-center h5 text-neutral-400 border-b-4 border-primary-400 hover:cursor-pointer'

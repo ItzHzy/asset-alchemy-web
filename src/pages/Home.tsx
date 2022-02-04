@@ -3,8 +3,13 @@ import BasicLayout from '../components/layouts/BasicLayout'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react'
 import { gql, useQuery } from '@apollo/client'
 import NewsItem from '../components/common/NewsItem'
-import { ClipLoader } from 'react-spinners'
 import Loading from './Loading'
+
+interface NewsItemProps {
+    datetime: string
+    headline: string
+    related: Array<{ ticker: string; dailyDelta: number }>
+}
 
 const GET_FEED = gql`
     query GET_FEED($userId: String) {
@@ -21,10 +26,10 @@ const GET_FEED = gql`
 `
 
 function Home() {
-    const auth = useAuth0()
+    const Auth = useAuth0()
     const GetFeedQuery = useQuery(GET_FEED, {
         variables: {
-            userId: auth.user.sub,
+            userId: Auth.user?.sub,
         },
     })
 
@@ -40,10 +45,9 @@ function Home() {
             <div className="flex flex-col pb-3">
                 <div className="pb-1 pl-3 h5 text-neutral-400">Recent News</div>
                 <div className="flex flex-col gap-1">
-                    {GetFeedQuery.data.getFeed.map((result) => (
+                    {GetFeedQuery.data.getFeed.map((result: NewsItemProps) => (
                         <NewsItem
                             key={result.headline}
-                            type="news"
                             time={new Date(
                                 result.datetime,
                             ).toLocaleDateString()}

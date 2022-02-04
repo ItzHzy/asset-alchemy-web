@@ -7,7 +7,7 @@ const webpack = require('webpack')
 dotenv.config()
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     mode: process.env.NODE_ENV,
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -40,10 +40,15 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ],
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['*', '.tsx', '.ts', '.js', '.jsx'],
     },
     devServer: {
         static: path.resolve(__dirname, 'build'),

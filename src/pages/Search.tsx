@@ -3,13 +3,10 @@ import { useSearchParams } from 'react-router-dom'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import BasicLayout from '../components/layouts/BasicLayout'
 import { useQuery, gql } from '@apollo/client'
-import { ClipLoader } from 'react-spinners'
-import CompanyResult from '../components/common/CompanyItem'
+import CompanyResult, {
+    CompanyItemProps,
+} from '../components/common/CompanyItem'
 import Loading from './Loading'
-
-const data = []
-
-const stories = []
 
 const FIND_COMPANIES = gql`
     query Query($query: String) {
@@ -41,18 +38,18 @@ function Search() {
         return <Loading />
     }
 
-    function setTimeRange(time) {
+    function setTimeRange(time: string) {
         setSearchParams({
-            q: searchParams.get('q'),
+            q: searchParams.get('q') as string,
             range: time,
-            sort: searchParams.get('sort'),
+            sort: searchParams.get('sort') as string,
         })
     }
 
-    function setSortBy(sort) {
+    function setSortBy(sort: string) {
         setSearchParams({
-            q: searchParams.get('q'),
-            range: searchParams.get('range'),
+            q: searchParams.get('q') as string,
+            range: searchParams.get('range') as string,
             sort: sort,
         })
     }
@@ -60,7 +57,7 @@ function Search() {
     return searchParams.get('q') ? (
         <BasicLayout>
             <div className="flex flex-col items-center h-full w-[530px] p-[10px] gap-2">
-                {data.searchCompanies.map((result) => (
+                {data.searchCompanies.map((result: CompanyItemProps) => (
                     <CompanyResult
                         key={result.ticker}
                         logo={result.logo}

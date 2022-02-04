@@ -26,12 +26,20 @@ const UNFOLLOW_COMPANY = gql`
     }
 `
 
-function CompanyResult(props) {
+export interface CompanyItemProps {
+    ticker: string
+    logo: string
+    name: string
+    price: number
+    dailyDelta: number
+}
+
+function CompanyItem(props: CompanyItemProps): JSX.Element {
     const navigate = useNavigate()
-    const auth = useAuth0()
+    const Auth = useAuth0()
     const isFollowingQuery = useQuery(IS_FOLLOWING, {
         variables: {
-            userId: auth.user.sub,
+            userId: Auth.user?.sub,
             ticker: props.ticker,
         },
         fetchPolicy: 'no-cache',
@@ -46,7 +54,7 @@ function CompanyResult(props) {
         isFollowingQuery.loading ||
         followCompanyMutation.loading ||
         unfollowCompanyMutation.loading ||
-        auth.loading
+        Auth.isLoading
     ) {
         return (
             <div className="flex w-full gap-[15px] px-2">
@@ -96,7 +104,7 @@ function CompanyResult(props) {
         isFollowingQuery.error ||
         followCompanyMutation.error ||
         unfollowCompanyMutation.error ||
-        auth.error
+        Auth.error
     ) {
         console.log(
             isFollowingQuery.error +
@@ -105,7 +113,7 @@ function CompanyResult(props) {
                 '\n' +
                 unfollowCompanyMutation.error +
                 '\n' +
-                auth.error,
+                Auth.error,
         )
         return <span className="text-error">Error</span>
     }
@@ -154,12 +162,13 @@ function CompanyResult(props) {
                             ? 'primary'
                             : 'secondary'
                     }
+                    size="sm"
                     primaryIcon={fasHeart}
                     secondaryIcon={farHeart}
                     primaryOnClick={() => {
                         unfollowCompany({
                             variables: {
-                                userId: auth.user.sub,
+                                userId: Auth.user?.sub,
                                 ticker: props.ticker,
                             },
                         })
@@ -168,7 +177,7 @@ function CompanyResult(props) {
                     secondaryOnClick={() => {
                         followCompany({
                             variables: {
-                                userId: auth.user.sub,
+                                userId: Auth.user?.sub,
                                 ticker: props.ticker,
                             },
                         })
@@ -180,4 +189,4 @@ function CompanyResult(props) {
     )
 }
 
-export default CompanyResult
+export default CompanyItem
