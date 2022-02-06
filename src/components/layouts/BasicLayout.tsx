@@ -29,7 +29,11 @@ export function TitleBar() {
     const auth = useAuth0()
     return (
         <div className="z-10 fixed top-0 left-0 flex flex-row items-center justify-between h-[70px] w-full bg-neutral-700 px-[50px]">
-            {/* <img src={Logo} alt="Logo" className="w-[250px]" /> */}
+            <img
+                src="https://img.assetalchemy.io/LOGO_COLOR.svg"
+                alt="Logo"
+                className="w-[250px]"
+            />
             <SearchBar />
             <p className="text-neutral-500 h5 w-[250px]">
                 {/* Hi,

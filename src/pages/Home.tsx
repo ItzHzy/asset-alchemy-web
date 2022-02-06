@@ -43,7 +43,6 @@ function Home() {
     return (
         <BasicLayout>
             <div className="flex flex-col pb-3">
-                <div className="pb-1 pl-3 h5 text-neutral-400">Recent News</div>
                 <div className="flex flex-col gap-1">
                     {GetFeedQuery.data.getFeed.map((result: NewsItemProps) => (
                         <NewsItem
