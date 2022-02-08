@@ -67,21 +67,7 @@ module.exports = {
             filename: 'index.css',
         }),
         new webpack.DefinePlugin({
-            'process.env.AUTH0_DOMAIN': JSON.stringify(
-                process.env.AUTH0_DOMAIN,
-            ),
-            'process.env.AUTH0_CLIENT_ID': JSON.stringify(
-                process.env.AUTH0_CLIENT_ID,
-            ),
-            'process.env.AUTH0_REDIRECT_URI': JSON.stringify(
-                process.env.AUTH0_REDIRECT_URI,
-            ),
-            'process.env.AUTH0_API_IDENTIFIER': JSON.stringify(
-                process.env.AUTH0_API_IDENTIFIER,
-            ),
-            'process.env.API_SERVER_URL': JSON.stringify(
-                process.env.API_SERVER_URL,
-            ),
+            'process.env': JSON.stringify(process.env),
         }),
     ],
 }
