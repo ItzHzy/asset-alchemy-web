@@ -1,7 +1,7 @@
 FROM node:14-alpine AS builder
 ENV PORT 8080
 ENV AUTH0_API_IDENTIFIER https://api.assetalchemy.io
-
+ENV NODE_ENV production
 ARG AUTH0_DOMAIN
 ARG AUTH0_CLIENT_ID
 ARG AUTH0_REDIRECT_URI
@@ -16,8 +16,6 @@ WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
 RUN npm i
-
-ENV NODE_ENV production
 
 COPY . .
 RUN npm run build
