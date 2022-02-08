@@ -10,6 +10,7 @@ export interface NewsItemProps {
     day: string
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
+    sourceURL: string
 }
 
 function NewsItem(props: NewsItemProps) {
@@ -29,7 +30,12 @@ function NewsItem(props: NewsItemProps) {
                         {props.time + ' • ' + props.day}
                     </p>
                 </div>
-                <span className="w-full min-h-min h6 text-neutral-300">
+                <span
+                    className="w-full min-h-min h6 text-neutral-300 hover:cursor-pointer"
+                    onClick={() => {
+                        window.open(props.sourceURL)
+                    }}
+                >
                     {props.headline}
                 </span>
                 <div className="flex flex-row flex-wrap w-full pt-05 pb-05 min-h-min">

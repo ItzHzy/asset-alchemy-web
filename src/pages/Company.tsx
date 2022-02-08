@@ -12,6 +12,7 @@ interface NewsItemProps {
     datetime: string
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
+    sourceURL: string
 }
 
 const GET_COMPANY = gql`
@@ -37,6 +38,7 @@ const GET_COMPANY = gql`
                 ticker
                 dailyDelta
             }
+            sourceURL
         }
     }
 `
@@ -108,6 +110,7 @@ function Company() {
                                     ).toLocaleTimeString()}
                                     related={result.related}
                                     headline={result.headline}
+                                    sourceURL={result.sourceURL}
                                 />
                             ))
                         ) : (

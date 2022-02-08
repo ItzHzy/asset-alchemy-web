@@ -9,6 +9,7 @@ interface NewsItemProps {
     datetime: string
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
+    sourceURL: string
 }
 
 const GET_FEED = gql`
@@ -20,6 +21,7 @@ const GET_FEED = gql`
                 ticker
                 dailyDelta
             }
+            sourceURL
             summary
         }
     }
@@ -53,6 +55,7 @@ function Home() {
                             day={new Date(result.datetime).toLocaleTimeString()}
                             related={result.related}
                             headline={result.headline}
+                            sourceURL={result.sourceURL}
                         />
                     ))}
                 </div>
