@@ -6,7 +6,7 @@ import NewsItem from '../components/common/NewsItem'
 import Loading from './Loading'
 
 interface NewsItemProps {
-    datetime: string
+    datetime: number
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
     sourceURL: string
@@ -46,18 +46,25 @@ function Home() {
         <BasicLayout>
             <div className="flex flex-col pb-3">
                 <div className="flex flex-col gap-1">
-                    {GetFeedQuery.data.getFeed.map((result: NewsItemProps) => (
-                        <NewsItem
-                            key={result.headline}
-                            time={new Date(
-                                result.datetime,
-                            ).toLocaleDateString()}
-                            day={new Date(result.datetime).toLocaleTimeString()}
-                            related={result.related}
-                            headline={result.headline}
-                            sourceURL={result.sourceURL}
-                        />
-                    ))}
+                    {GetFeedQuery.data.getFeed
+                        .map((result: NewsItemProps) => (
+                            <NewsItem
+                                key={result.headline}
+                                time={new Date(
+                                    result.datetime,
+                                ).toLocaleDateString()}
+                                day={new Date(
+                                    result.datetime,
+                                ).toLocaleTimeString()}
+                                related={result.related}
+                                headline={result.headline}
+                                sourceURL={result.sourceURL}
+                            />
+                        ))
+                        .sort(
+                            (a: NewsItemProps, b: NewsItemProps) =>
+                                b.datetime - a.datetime,
+                        )}
                 </div>
                 <div className="flex justify-center mt-2 text-neutral-400 h4">
                     You're all caught up 🎉
