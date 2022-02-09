@@ -28,7 +28,7 @@ function BasicLayout(props: BasicLayoutProps) {
 export function TitleBar() {
     const auth = useAuth0()
     return (
-        <div className="z-10 fixed top-0 left-0 flex flex-row items-center justify-between h-[70px] w-full bg-neutral-700 px-[50px]">
+        <div className="z-10 fixed top-0 left-0 flex flex-row items-center justify-between h-[70px] w-full px-[50px]">
             <img
                 src="https://img.assetalchemy.io/LOGO_COLOR.svg"
                 alt="Logo"

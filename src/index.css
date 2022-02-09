@@ -9,8 +9,8 @@ html {
 }
 
 body {
+    @apply bg-neutral-800;
     height: 100%;
-    background-color: #191f23;
 }
 
 #root {
