@@ -12,7 +12,7 @@ init({
 })
 
 ReactDOM.render(
-    <ErrorBoundary>
+    <ErrorBoundary showDialog>
         <BrowserRouter>
             <Auth0Provider
                 domain={process.env.AUTH0_DOMAIN as string}
