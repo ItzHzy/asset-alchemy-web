@@ -28,6 +28,8 @@ function Search() {
         },
     })
 
+    throw Error('test')
+
     if (error) {
         console.log(error)
 

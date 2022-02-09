@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const dotenv = require('dotenv')
 const webpack = require('webpack')
+const SentryCliPlugin = require('@sentry/webpack-plugin')
 
 dotenv.config()
 
