@@ -35,12 +35,15 @@ function CompanyItem(props: CompanyItemProps): JSX.Element {
                 </span>
 
                 <span className="text-body text-neutral-400">
-                    {'$' + props.price + ' '}
+                    {'$' + parseFloat(props.price.toString()).toFixed(2) + ' '}
                     <span
                         className={
-                            props.dailyDelta > 0 ? 'text-success' : 'text-error'
+                            props.dailyDelta >= 0
+                                ? 'text-success'
+                                : 'text-error'
                         }
                     >
+                        {props.dailyDelta >= 0 ? '+' : ''}
                         {parseFloat(props.dailyDelta.toString()).toPrecision(
                             2,
                         ) + '%'}

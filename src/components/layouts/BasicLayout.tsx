@@ -64,18 +64,9 @@ export function SearchBar() {
 
     const navigate = useNavigate()
 
-    const range = searchParams.get('range')
-        ? searchParams.get('range')
-        : 'All Time'
-
-    const sort = searchParams.get('sort') ? searchParams.get('sort') : 'Newest'
-
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
-            navigate(
-                `/explore/search?q=${input}&range=${range}&sort=${sort}`,
-                {},
-            )
+            navigate(`/explore/search?q=${input}`, {})
         }
     }
 

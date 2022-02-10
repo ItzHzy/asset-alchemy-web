@@ -28,30 +28,8 @@ function Search() {
         },
     })
 
-    if (error) {
-        console.log(error)
-
-        return <h1>Error</h1>
-    }
-
     if (loading) {
         return <Loading />
-    }
-
-    function setTimeRange(time: string) {
-        setSearchParams({
-            q: searchParams.get('q') as string,
-            range: time,
-            sort: searchParams.get('sort') as string,
-        })
-    }
-
-    function setSortBy(sort: string) {
-        setSearchParams({
-            q: searchParams.get('q') as string,
-            range: searchParams.get('range') as string,
-            sort: sort,
-        })
     }
 
     return searchParams.get('q') ? (
