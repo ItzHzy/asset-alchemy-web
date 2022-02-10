@@ -65,7 +65,7 @@ function FollowBtn(props: FollowBtnProps) {
             type={isFollowingQuery.data.isFollowing ? 'primary' : 'secondary'}
             primaryIcon={fasHeart}
             secondaryIcon={farHeart}
-            size={'xs'}
+            size={'lg'}
             primaryOnClick={() => {
                 unfollowCompany({
                     variables: {

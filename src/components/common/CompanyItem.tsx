@@ -7,24 +7,7 @@ import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 import { round } from 'mathjs'
 import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
-
-const IS_FOLLOWING = gql`
-    query IS_FOLLOWING($userId: String, $ticker: String) {
-        isFollowing(userId: $userId, ticker: $ticker)
-    }
-`
-
-const FOLLOW_COMPANY = gql`
-    mutation FOLLOW_COMPANY($userId: String, $ticker: String) {
-        followCompany(userId: $userId, ticker: $ticker)
-    }
-`
-
-const UNFOLLOW_COMPANY = gql`
-    mutation FOLLOW_COMPANY($userId: String, $ticker: String) {
-        unfollowCompany(userId: $userId, ticker: $ticker)
-    }
-`
+import FollowBtn from './FollowBtn'
 
 export interface CompanyItemProps {
     ticker: string
@@ -37,25 +20,8 @@ export interface CompanyItemProps {
 function CompanyItem(props: CompanyItemProps): JSX.Element {
     const navigate = useNavigate()
     const Auth = useAuth0()
-    const isFollowingQuery = useQuery(IS_FOLLOWING, {
-        variables: {
-            userId: Auth.user?.sub,
-            ticker: props.ticker,
-        },
-        fetchPolicy: 'no-cache',
-    })
 
-    const [followCompany, followCompanyMutation] = useMutation(FOLLOW_COMPANY)
-
-    const [unfollowCompany, unfollowCompanyMutation] =
-        useMutation(UNFOLLOW_COMPANY)
-
-    if (
-        isFollowingQuery.loading ||
-        followCompanyMutation.loading ||
-        unfollowCompanyMutation.loading ||
-        Auth.isLoading
-    ) {
+    if (Auth.isLoading) {
         return (
             <div className="flex w-full gap-[15px] px-2">
                 <img
@@ -100,21 +66,7 @@ function CompanyItem(props: CompanyItemProps): JSX.Element {
         )
     }
 
-    if (
-        isFollowingQuery.error ||
-        followCompanyMutation.error ||
-        unfollowCompanyMutation.error ||
-        Auth.error
-    ) {
-        console.log(
-            isFollowingQuery.error +
-                '\n' +
-                followCompanyMutation.error +
-                '\n' +
-                unfollowCompanyMutation.error +
-                '\n' +
-                Auth.error,
-        )
+    if (Auth.error) {
         return <span className="text-error">Error</span>
     }
 
@@ -137,53 +89,21 @@ function CompanyItem(props: CompanyItemProps): JSX.Element {
                     {props.name}
                     {' ($' + props.ticker + ')'}
                 </span>
-                {props.price ? (
-                    <span className="text-body text-neutral-400">
-                        {'$' + props.price + ' '}
-                        <span
-                            className={
-                                props.dailyDelta > 0
-                                    ? 'text-success'
-                                    : 'text-error'
-                            }
-                        >
-                            {round(props.dailyDelta, 2) + '%'}
-                        </span>
+
+                <span className="text-body text-neutral-400">
+                    {'$' + props.price + ' '}
+                    <span
+                        className={
+                            props.dailyDelta > 0 ? 'text-success' : 'text-error'
+                        }
+                    >
+                        {round(props.dailyDelta, 2) + '%'}
                     </span>
-                ) : (
-                    []
-                )}
+                </span>
             </div>
 
             <div className="flex items-center justify-center w-full h-100">
-                <IconButton
-                    type={
-                        isFollowingQuery.data.isFollowing
-                            ? 'primary'
-                            : 'secondary'
-                    }
-                    size="sm"
-                    primaryIcon={fasHeart}
-                    secondaryIcon={farHeart}
-                    primaryOnClick={() => {
-                        unfollowCompany({
-                            variables: {
-                                userId: Auth.user?.sub,
-                                ticker: props.ticker,
-                            },
-                        })
-                        isFollowingQuery.refetch()
-                    }}
-                    secondaryOnClick={() => {
-                        followCompany({
-                            variables: {
-                                userId: Auth.user?.sub,
-                                ticker: props.ticker,
-                            },
-                        })
-                        isFollowingQuery.refetch()
-                    }}
-                />
+                <FollowBtn ticker={props.ticker} />
             </div>
         </div>
     )

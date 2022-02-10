@@ -218,8 +218,8 @@ function Header(props: HeaderProps) {
                 src={props.logo}
             />
             <div className="flex flex-col justify-around h-[128px] w-full">
-                <div className="flex flex-row items-center justify-between h4 text-neutral-400">
-                    {`${props.name} ($${props.ticker})`}
+                <div className="flex flex-row items-center justify-between text-neutral-400">
+                    <span className="h4">{`${props.name} ($${props.ticker})`}</span>
                     <FollowBtn ticker={props.ticker} />
                 </div>
                 <div className="h5 text-neutral-400">{`$${props.price} ${
