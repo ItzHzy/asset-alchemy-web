@@ -28,6 +28,7 @@ function Following() {
         variables: {
             userId: Auth.user?.sub,
         },
+        fetchPolicy: 'network-only',
     })
     if (getFollowingQuery.loading) {
         return <Loading />
