@@ -1,4 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import {
     Link,
@@ -6,6 +8,12 @@ import {
     useNavigate,
     useLocation,
 } from 'react-router-dom'
+import {
+    faHome as fasHome,
+    faGlobe as fasGlobe,
+    faBell as fasBell,
+    faSearch as fasSearch,
+} from '@fortawesome/free-solid-svg-icons'
 
 interface BasicLayoutProps {
     children: JSX.Element
@@ -73,9 +81,12 @@ export function SearchBar() {
 
     return (
         <div className="flex flex-row justify-self-start items-center w-[440px] h-[45px] py-[5px] pl-[15px] pr-[10px] bg-neutral-600 rounded-[100px] space-x-[10px]">
-            <i className="fas fa-search text-[25px] text-neutral-400"></i>
+            <FontAwesomeIcon
+                icon={fasSearch}
+                className="text-[25px] text-neutral-400"
+            />
             <input
-                className="w-full outline-none bg-neutral-600 text-neutral-400 text-body"
+                className="w-full outline-none bg-neutral-600 text-neutral-400 text-body h4"
                 placeholder={'Search'}
                 value={input?.toString()}
                 onInput={(e) =>
@@ -91,16 +102,16 @@ export function Navigation() {
     const location = useLocation()
     return (
         <div className="sticky top-[85px] flex flex-col p-[15px] gap-[20px] h-min">
-            <Tab path="/" icon="fas fa-home" label="Home" mainPath={'home'} />
+            <Tab path="/" icon={fasHome} label="Home" mainPath={'home'} />
             <Tab
                 path="/explore/search"
-                icon="fas fa-globe"
+                icon={fasGlobe}
                 label="Explore"
                 mainPath={'explore'}
             />
             <Tab
                 path="/following"
-                icon="fas fa-bell"
+                icon={fasBell}
                 label="Following"
                 mainPath={'following'}
             />
@@ -116,7 +127,7 @@ export function Navigation() {
 interface TabProps {
     label: string
     mainPath: string
-    icon: string
+    icon: IconDefinition
     path: string
 }
 
@@ -136,7 +147,7 @@ export function Tab(props: TabProps) {
     return (
         <Link to={props.path} className="flex items-center min-w-min min-h-min">
             <div className="flex items-center justify-center h-[25px] w-[25px]">
-                <i className={iconStyles} />
+                <FontAwesomeIcon icon={props.icon} className={iconStyles} />
             </div>
 
             <span className={labelStyles}>{props.label}</span>
