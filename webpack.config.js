@@ -12,7 +12,7 @@ module.exports = {
     mode: process.env.NODE_ENV,
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
+        filename: 'bundle-[hash].js',
         publicPath: '/',
     },
     module: {
@@ -65,7 +65,7 @@ module.exports = {
             template: './src/index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: 'index.css',
+            filename: 'index-[hash].css',
         }),
         new webpack.DefinePlugin({
             'process.env': JSON.stringify(process.env),
