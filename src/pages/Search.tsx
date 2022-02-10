@@ -56,7 +56,7 @@ function Search() {
 
     return searchParams.get('q') ? (
         <BasicLayout>
-            <div className="flex flex-col items-center h-full w-[530px] p-[10px] gap-2">
+            <div className="flex flex-col items-center h-full w-[680px] p-[10px] gap-2">
                 {data.searchCompanies.map((result: CompanyItemProps) => (
                     <CompanyResult
                         key={result.ticker}

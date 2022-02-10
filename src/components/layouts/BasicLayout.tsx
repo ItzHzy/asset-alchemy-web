@@ -17,7 +17,7 @@ function BasicLayout(props: BasicLayoutProps) {
             <TitleBar />
             <div className="absolute top-[85px] left-[50%] translate-x-[-62%] flex flex-row h-min">
                 <Navigation />
-                <div className="flex flex-col items-center h-full w-[500px]">
+                <div className="flex flex-col items-center h-full w-[750px]">
                     {props.children}
                 </div>
             </div>

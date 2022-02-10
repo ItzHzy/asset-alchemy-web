@@ -15,7 +15,7 @@ export interface NewsItemProps {
 
 function NewsItem(props: NewsItemProps) {
     return (
-        <div className="flex w-[450px] min-h-[85px] h-auto bg-neutral-700 rounded">
+        <div className="flex w-[600px] min-h-[85px] h-auto bg-neutral-700 rounded">
             <div className="flex justify-center items-start pt-[5px] h-full w-[45px]">
                 <div className="h-[16px] w-[16px]">
                     <FontAwesomeIcon
@@ -24,7 +24,7 @@ function NewsItem(props: NewsItemProps) {
                     />
                 </div>
             </div>
-            <div className="flex flex-col pt-[5px] h-full w-[405px]">
+            <div className="flex flex-col pt-[5px] h-full w-[555px]">
                 <div className="flex justify-between items-center w-full h-[20px] pr-[10px]">
                     <p className="s2 text-neutral-400">
                         {props.time + ' • ' + props.day}

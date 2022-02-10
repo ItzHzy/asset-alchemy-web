@@ -1,10 +1,11 @@
 import { gql, useQuery } from '@apollo/client'
-import { withAuthenticationRequired } from '@auth0/auth0-react'
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FollowBtn from '../components/common/FollowBtn'
 import NewsItem from '../components/common/NewsItem'
 import PriceChart from '../components/common/PriceChart'
+import BasicLayout from '../components/layouts/BasicLayout'
 import ExtendedLayout from '../components/layouts/ExtendedLayout'
 import Loading from './Loading'
 
@@ -16,7 +17,7 @@ interface NewsItemProps {
 }
 
 const GET_COMPANY = gql`
-    query GET_COMPANY($ticker: String) {
+    query GET_COMPANY($ticker: String, $userId: String) {
         getCompanyInfo(ticker: $ticker) {
             logo
             name
@@ -30,8 +31,11 @@ const GET_COMPANY = gql`
             grossProfit
             operatingIncome
         }
-        getHistoricalPrices(ticker: $ticker, range: "1y", interval: 3)
-        getNews(ticker: $ticker) {
+        getHistoricalPrices(ticker: $ticker, range: "1y", interval: 3) {
+            date
+            close
+        }
+        getNews(ticker: $ticker, userId: $userId) {
             datetime
             headline
             related {
@@ -44,12 +48,14 @@ const GET_COMPANY = gql`
 `
 
 function Company() {
+    const Auth = useAuth0()
     const pathParams = useParams()
     const [currentSection, changeSection] = useState(0)
     const [currentSubsection, changeSubsection] = useState(0) // 0: Most Recent Financials
     const getCompanyQuery = useQuery(GET_COMPANY, {
         variables: {
             ticker: pathParams.ticker,
+            userId: Auth.user?.sub,
         },
     })
 
@@ -61,7 +67,7 @@ function Company() {
         console.log(JSON.stringify(getCompanyQuery.error))
     }
 
-    const {
+    let {
         logo,
         name,
         ticker,
@@ -75,14 +81,17 @@ function Company() {
         description,
     } = getCompanyQuery.data.getCompanyInfo
 
+    price = price.toFixed(2)
+    dailyDelta = parseFloat(dailyDelta).toPrecision(2)
+
     const prices = getCompanyQuery.data.getHistoricalPrices
 
     const news = getCompanyQuery.data.getNews
 
     if (currentSection == 0) {
         return (
-            <ExtendedLayout>
-                <div className="flex flex-col w-full gap-2">
+            <BasicLayout>
+                <div className="flex flex-col items-center w-full gap-2">
                     <Header
                         logo={logo}
                         name={name}
@@ -120,14 +129,14 @@ function Company() {
                         )}
                     </div>
                 </div>
-            </ExtendedLayout>
+            </BasicLayout>
         )
     }
 
     if (currentSection == 1) {
         return (
-            <ExtendedLayout>
-                <div className="flex flex-col w-full gap-2">
+            <BasicLayout>
+                <div className="flex flex-col items-center w-full gap-2">
                     <Header
                         logo={logo}
                         name={name}
@@ -164,14 +173,14 @@ function Company() {
                         </div>
                     )}
                 </div>
-            </ExtendedLayout>
+            </BasicLayout>
         )
     }
 
     if (currentSection == 2) {
         return (
-            <ExtendedLayout>
-                <div className="flex flex-col w-full gap-2">
+            <BasicLayout>
+                <div className="flex flex-col items-center w-full gap-2">
                     <Header
                         logo={logo}
                         name={name}
@@ -195,7 +204,7 @@ function Company() {
                         </div>
                     )}
                 </div>
-            </ExtendedLayout>
+            </BasicLayout>
         )
     }
 
