@@ -26,7 +26,7 @@ function BasicLayout(props: BasicLayoutProps) {
 }
 
 export function TitleBar() {
-    const auth = useAuth0()
+    const { logout } = useAuth0()
     return (
         <div className="z-10 fixed top-0 left-0 flex flex-row items-center justify-between h-[70px] w-full px-[50px] bg-neutral-800">
             <img
@@ -35,11 +35,13 @@ export function TitleBar() {
                 className="w-[250px]"
             />
             <SearchBar />
-            <p className="text-neutral-500 h5 w-[250px]">
-                {/* Hi,
-                <span className="font-bold text-primary-500">
-                    {' ' + auth.user.name}
-                </span> */}
+            <p className="flex justify-end text-error h5 w-[250px]">
+                <span
+                    className="font-bold cursor-pointer"
+                    onClick={() => logout()}
+                >
+                    Sign Out
+                </span>
             </p>
         </div>
     )
