@@ -15,7 +15,7 @@ function BasicLayout(props: BasicLayoutProps) {
     return (
         <div className="flex w-full h-full">
             <TitleBar />
-            <div className="absolute top-[85px] left-[50%] translate-x-[-62%] flex flex-row h-min">
+            <div className="absolute top-[85px] left-[50%] translate-x-[-59%] flex flex-row h-min">
                 <Navigation />
                 <div className="flex flex-col items-center h-full w-[750px]">
                     {props.children}
@@ -72,7 +72,7 @@ export function SearchBar() {
     }
 
     return (
-        <div className="flex flex-row items-center w-[440px] h-[45px] py-[5px] pl-[15px] pr-[10px] bg-neutral-600 rounded-[100px] space-x-[10px]">
+        <div className="flex flex-row justify-self-start items-center w-[440px] h-[45px] py-[5px] pl-[15px] pr-[10px] bg-neutral-600 rounded-[100px] space-x-[10px]">
             <i className="fas fa-search text-[25px] text-neutral-400"></i>
             <input
                 className="w-full outline-none bg-neutral-600 text-neutral-400 text-body"
