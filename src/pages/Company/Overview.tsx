@@ -71,4 +71,4 @@ function Overview() {
     )
 }
 
-export default withAuthenticationRequired(Overview)
+export default Overview

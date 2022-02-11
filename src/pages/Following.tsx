@@ -57,4 +57,4 @@ function Following() {
     )
 }
 
-export default withAuthenticationRequired(Following)
+export default Following

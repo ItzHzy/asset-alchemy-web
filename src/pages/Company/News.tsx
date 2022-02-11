@@ -101,4 +101,4 @@ function News() {
     )
 }
 
-export default withAuthenticationRequired(News)
+export default News

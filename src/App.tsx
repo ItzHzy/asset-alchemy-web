@@ -6,6 +6,7 @@ import Following from './pages/Following'
 import Overview from './pages/Company/Overview'
 import Financials from './pages/Company/Financials'
 import News from './pages/Company/News'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 function App() {
     const pathParams = useParams()
@@ -32,9 +33,9 @@ function App() {
             />
             <Route path="/explore/company/:ticker/news" element={<News />} />
             <Route path="/following" element={<Following />} />
-            <Route path="/" element={<Navigate to="/home" />}></Route>
+            <Route path="*" element={<Navigate to="/home" />}></Route>
         </Routes>
     )
 }
 
-export default App
+export default withAuthenticationRequired(App)

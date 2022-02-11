@@ -135,4 +135,4 @@ function FinancialDetails(props: FinancialsDetailsProps) {
     )
 }
 
-export default withAuthenticationRequired(Financials)
+export default Financials

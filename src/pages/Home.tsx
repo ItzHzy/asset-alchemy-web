@@ -66,4 +66,4 @@ function Home() {
     )
 }
 
-export default withAuthenticationRequired(Home)
+export default Home

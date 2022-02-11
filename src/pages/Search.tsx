@@ -70,4 +70,4 @@ function NoResult() {
     )
 }
 
-export default withAuthenticationRequired(Search)
+export default Search
