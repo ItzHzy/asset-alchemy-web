@@ -6,7 +6,9 @@ import { useQuery, gql } from '@apollo/client'
 import CompanyResult, {
     CompanyItemProps,
 } from '../components/common/CompanyItem'
-import Loading from './Loading'
+import Loading from '../components/common/Loading'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch as fasSearch } from '@fortawesome/free-solid-svg-icons'
 
 const FIND_COMPANIES = gql`
     query Query($query: String) {
@@ -57,10 +59,9 @@ function Search() {
 function NoResult() {
     return (
         <div className="flex flex-col items-center h-full w-[530px]">
-            <i
-                className={
-                    'fas fa-search text-primary-500 text-[100px] mt-[50px]'
-                }
+            <FontAwesomeIcon
+                icon={fasSearch}
+                className="text-primary-600 text-[100px] mt-[50px]"
             />
             <span className="h5 text-neutral-500 mt-[50px]">
                 Search for tickers and companies!

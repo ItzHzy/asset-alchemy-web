@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { round } from 'mathjs'
 import React from 'react'
 import { faTwitter as fabTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faNewspaper as fasNewspaper } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
+import { formatDay, formatDelta, formatTime } from '../../helpers/format'
 
 export interface NewsItemProps {
-    time: string
-    day: string
+    datetime: string
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
     sourceURL: string
@@ -27,7 +26,9 @@ function NewsItem(props: NewsItemProps) {
             <div className="flex flex-col pt-[5px] h-full w-[555px]">
                 <div className="flex justify-between items-center w-full h-[20px] pr-[10px]">
                     <p className="s2 text-neutral-400">
-                        {props.time + ' • ' + props.day}
+                        {formatDay(props.datetime) +
+                            ' • ' +
+                            formatTime(props.datetime)}
                     </p>
                 </div>
                 <span
@@ -41,13 +42,9 @@ function NewsItem(props: NewsItemProps) {
                 <div className="flex flex-row flex-wrap w-full pt-05 pb-05 min-h-min">
                     {props.related.map((result) => (
                         <Delta
-                            key={props.time + result.ticker}
+                            key={props.datetime + result.ticker}
                             ticker={result.ticker}
-                            dailyDelta={
-                                result.dailyDelta
-                                    ? round(result.dailyDelta, 2)
-                                    : 0.0
-                            }
+                            dailyDelta={result.dailyDelta}
                         />
                     ))}
                 </div>
@@ -81,7 +78,7 @@ function Delta(props: DeltaProps) {
                         : 'text-neutral-200')
                 }
             >
-                {props.ticker + ' ' + props.dailyDelta + '%'}
+                {props.ticker + ' ' + formatDelta(props.dailyDelta)}
             </span>
         </div>
     )

@@ -3,7 +3,7 @@ import BasicLayout from '../components/layouts/BasicLayout'
 import { gql, useQuery } from '@apollo/client'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react'
 import CompanyItem, { CompanyItemProps } from '../components/common/CompanyItem'
-import Loading from './Loading'
+import Loading from '../components/common/Loading'
 
 const GET_FOLLOWING = gql`
     query GET_FOLLOWING($userId: String) {

@@ -23,7 +23,7 @@ function BasicLayout(props: BasicLayoutProps) {
     return (
         <div className="flex w-full h-full">
             <TitleBar />
-            <div className="absolute top-[85px] left-[50%] translate-x-[-59%] flex flex-row h-min">
+            <div className="absolute top-[70px] left-[50%] translate-x-[-59%] flex flex-row h-min">
                 <Navigation />
                 <div className="flex flex-col items-center h-full w-[750px]">
                     {props.children}
@@ -93,7 +93,7 @@ export function Navigation() {
     const location = useLocation()
     return (
         <div className="sticky top-[85px] flex flex-col p-[15px] gap-[20px] h-min">
-            <Tab path="/" icon={fasHome} label="Home" mainPath={'home'} />
+            <Tab path="/home" icon={fasHome} label="Home" mainPath={'home'} />
             <Tab
                 path="/explore/search"
                 icon={fasGlobe}
