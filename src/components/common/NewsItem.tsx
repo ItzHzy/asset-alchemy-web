@@ -10,6 +10,7 @@ export interface NewsItemProps {
     headline: string
     related: Array<{ ticker: string; dailyDelta: number }>
     sourceURL: string
+    source: string
 }
 
 function NewsItem(props: NewsItemProps) {
@@ -26,9 +27,7 @@ function NewsItem(props: NewsItemProps) {
             <div className="flex flex-col pt-[5px] h-full w-[555px]">
                 <div className="flex justify-between items-center w-full h-[20px] pr-[10px]">
                     <p className="s2 text-neutral-400">
-                        {formatDay(props.datetime) +
-                            ' • ' +
-                            formatTime(props.datetime)}
+                        {props.source + ' • ' + formatTime(props.datetime)}
                     </p>
                 </div>
                 <span

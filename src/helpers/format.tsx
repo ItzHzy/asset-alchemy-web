@@ -1,5 +1,19 @@
-import { re } from 'mathjs'
 import React from 'react'
+
+const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+]
 
 export function formatPrice(price: number | string): string {
     return '$' + parseFloat(price.toString()).toFixed(2)
@@ -16,7 +30,18 @@ export function formatDay(datetime: string): string {
 }
 
 export function formatTime(datetime: string): string {
-    return new Date(datetime).toLocaleTimeString()
+    const today = new Date() // todays day
+    const day = new Date(datetime) // input day
+
+    if (today.toLocaleDateString() == day.toLocaleDateString()) {
+        return (today.getHours() - day.getHours()).toString() + 'h'
+    }
+
+    if (today.getFullYear != day.getFullYear) {
+        return `${months[day.getMonth()]} ${day.getDate()}, ${day.getFullYear}`
+    }
+
+    return months[day.getMonth()] + ' ' + day.getDate()
 }
 
 export function createDelta(delta: number | string): JSX.Element {

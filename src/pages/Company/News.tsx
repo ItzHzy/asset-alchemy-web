@@ -18,6 +18,7 @@ const NEWS = gql`
             dailyDelta
         }
         getNews(ticker: $ticker, userId: $userId) {
+            key
             datetime
             headline
             related {
@@ -25,6 +26,7 @@ const NEWS = gql`
                 dailyDelta
             }
             sourceURL
+            source
         }
     }
 `
@@ -71,8 +73,8 @@ function News() {
                     {news.length != 0 ? (
                         news
                             .filter((result: NewsItemProps) => {
-                                if (!stories.has(result.sourceURL)) {
-                                    stories.add(result.sourceURL)
+                                if (!stories.has(result.datetime)) {
+                                    stories.add(result.datetime)
                                     return true
                                 }
                                 return false
@@ -83,11 +85,12 @@ function News() {
                             )
                             .map((result: NewsItemProps) => (
                                 <NewsItem
-                                    key={result.headline}
+                                    key={result.datetime}
                                     datetime={result.datetime}
                                     related={result.related}
                                     headline={result.headline}
                                     sourceURL={result.sourceURL}
+                                    source={result.source}
                                 />
                             ))
                     ) : (

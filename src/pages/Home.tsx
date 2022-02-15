@@ -16,6 +16,7 @@ const GET_FEED = gql`
             }
             sourceURL
             summary
+            source
         }
     }
 `
@@ -38,8 +39,10 @@ function Home() {
                 <div className="flex flex-col gap-1">
                     {[...GetFeedQuery.data.getFeed]
                         .filter((result: NewsItemProps) => {
-                            if (!stories.has(result.sourceURL)) {
-                                stories.add(result.sourceURL)
+                            // console.log(result.subkey)
+
+                            if (!stories.has(result.datetime)) {
+                                stories.add(result.datetime)
                                 return true
                             }
                             return false
@@ -50,11 +53,12 @@ function Home() {
                         )
                         .map((result: NewsItemProps) => (
                             <NewsItem
-                                key={result.headline}
+                                key={result.datetime}
                                 datetime={result.datetime}
                                 related={result.related}
                                 headline={result.headline}
                                 sourceURL={result.sourceURL}
+                                source={result.source}
                             />
                         ))}
                 </div>
