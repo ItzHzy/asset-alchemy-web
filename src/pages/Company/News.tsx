@@ -18,7 +18,6 @@ const NEWS = gql`
             dailyDelta
         }
         getNews(ticker: $ticker, userId: $userId) {
-            key
             datetime
             headline
             related {
