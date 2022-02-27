@@ -34,6 +34,8 @@ function Search() {
         return <Loading />
     }
 
+    console.log(data)
+
     return searchParams.get('q') ? (
         <BasicLayout>
             <div className="flex flex-col items-center h-full w-[680px] p-[10px] gap-2">
@@ -43,7 +45,7 @@ function Search() {
                         logo={result.logo}
                         name={result.name}
                         ticker={result.ticker}
-                        price={result.price}
+                        price={result.price ? result.price : 0.0}
                         dailyDelta={result.dailyDelta}
                     />
                 ))}
