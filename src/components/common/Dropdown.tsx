@@ -4,7 +4,6 @@ interface DropdownProps {
     current: string
     options: Array<string>
     setOption: Function
-    setState: Function
 }
 
 function Dropdown(props: DropdownProps): JSX.Element {
@@ -12,39 +11,32 @@ function Dropdown(props: DropdownProps): JSX.Element {
 
     return (
         <div
-            className="flex flex-col gap-1 select-none"
-            onBlur={() => setState(false)}
-            onFocus={() => setState(true)}
+            className={
+                'relative flex  justify-center flex-col gap-1 select-none h-full w-full bg-neutral-700 hover:cursor-pointer group'
+            }
             tabIndex={0}
+            id="dropdown"
         >
-            <div
-                className={
-                    'flex items-center px-1 h-2 min-w-[90px] rounded bg-neutral-700 hover:cursor-pointer justify-between' +
-                    (opened ? ' border-[1px] border-neutral-600' : '')
-                }
-                onClick={() => (opened ? setState(false) : setState(true))}
-            >
-                <span className="text-neutral-400 text-body mr-05">
+            <div className={'px-1 rounded peer'}>
+                <p className={`text-neutral-400 text-body h-full w-full`}>
                     {props.current}
-                </span>
-                <i
+                </p>
+                {/* <i
                     className={
                         (opened ? 'fas fa-caret-up' : 'fas fa-caret-down') +
                         ' text-[20px] text-neutral-400'
                     }
-                />
+                /> */}
             </div>
             <div
                 className={
-                    'relative flex flex-col px-10 z-10 min-w-min min-h-min bg-neutral-700 gap-05 p-05 rounded hover:cursor-pointer items-left' +
-                    (opened ? '' : ' hidden')
+                    'absolute top-[50px] flex-col z-10 w-full max-h-[500px] overflow-y-scroll scrollbar-none bg-neutral-700 gap-05 p-05 rounded hover:cursor-pointer items-left hidden group-focus:visible group-focus:flex'
                 }
             >
                 {props.options.map((option: string) => (
                     <Option
                         key={option}
                         label={option}
-                        setState={setState}
                         setOption={props.setOption}
                     />
                 ))}
@@ -56,16 +48,15 @@ function Dropdown(props: DropdownProps): JSX.Element {
 interface OptionProps {
     label: string
     setOption: Function
-    setState: Function
 }
 
 function Option(props: OptionProps): JSX.Element {
     return (
         <div
-            className="flex items-center rounded min-w-min min-h-min text-body text-neutral-200 hover:bg-neutral-800 pl-05 p-05"
+            className="relative z-10 flex items-center rounded min-w-min min-h-min text-body text-neutral-200 hover:bg-neutral-800 pl-05 p-05"
             onClick={() => {
                 props.setOption(props.label)
-                props.setState(false)
+                document.getElementById('dropdown')?.blur()
             }}
         >
             {props.label}

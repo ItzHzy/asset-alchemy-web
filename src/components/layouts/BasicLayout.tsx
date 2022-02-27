@@ -13,6 +13,7 @@ import {
     faGlobe as fasGlobe,
     faBell as fasBell,
     faSearch as fasSearch,
+    faHeart as fasHeart,
 } from '@fortawesome/free-solid-svg-icons'
 
 interface BasicLayoutProps {
@@ -102,7 +103,7 @@ export function Navigation() {
             />
             <Tab
                 path="/following"
-                icon={fasBell}
+                icon={fasHeart}
                 label="Following"
                 mainPath={'following'}
             />
@@ -111,6 +112,12 @@ export function Navigation() {
                 icon="fas fa-calendar-alt"
                 label="Calendar"
             /> */}
+            <Tab
+                path="/alerts"
+                icon={fasBell}
+                label="Alerts"
+                mainPath={'alerts'}
+            />
         </div>
     )
 }

@@ -42,8 +42,6 @@ function News() {
 
     if (NewsQuery.loading) return <Loading />
 
-    if (NewsQuery.error) console.log(NewsQuery.error)
-
     const { logo, name, ticker, price, dailyDelta } =
         NewsQuery.data.getCompanyInfo
 

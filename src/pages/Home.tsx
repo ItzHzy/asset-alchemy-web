@@ -39,8 +39,6 @@ function Home() {
                 <div className="flex flex-col gap-1">
                     {[...GetFeedQuery.data.getFeed]
                         .filter((result: NewsItemProps) => {
-                            // console.log(result.subkey)
-
                             if (!stories.has(result.datetime)) {
                                 stories.add(result.datetime)
                                 return true

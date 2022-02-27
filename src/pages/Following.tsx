@@ -33,9 +33,6 @@ function Following() {
     if (getFollowingQuery.loading) {
         return <Loading />
     }
-    if (getFollowingQuery.error) {
-        console.log(JSON.stringify(getFollowingQuery.error))
-    }
 
     return (
         <BasicLayout>
