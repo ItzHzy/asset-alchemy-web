@@ -24,6 +24,7 @@ ReactDOM.render(
                 clientId={process.env.AUTH0_CLIENT_ID as string}
                 redirectUri={process.env.AUTH0_REDIRECT_URI}
                 audience={process.env.AUTH0_API_IDENTIFIER}
+                useRefreshTokens={true}
             >
                 <AuthenticatedApolloProvider>
                     <App />
