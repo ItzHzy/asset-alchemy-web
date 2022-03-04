@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useMutation, useQuery } from '@apollo/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope as fasEnvelope } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
@@ -58,8 +58,19 @@ export interface AlertItemsProps {
     methods: { email: boolean }
 }
 
+const DELETE_ALERT = gql`
+    mutation DELETE_ALERT($alertId: String) {
+        deleteAlert(alertId: $alertId)
+    }
+`
+
 function AlertItem(props: AlertItemsProps) {
     const navigate = useNavigate()
+    const [deleteAlert, _] = useMutation(DELETE_ALERT, {
+        onCompleted: () => {
+            location.reload()
+        },
+    })
 
     return (
         <div className="flex h-min w-[600px] items-center rounded-[10px] bg-neutral-700 px-[20px] py-[15px]">
@@ -79,7 +90,16 @@ function AlertItem(props: AlertItemsProps) {
                 </div>
             </div>
             <div className="flex h-full w-[130px] items-center">
-                <p className="ml-auto cursor-pointer text-button text-error">
+                <p
+                    className="ml-auto cursor-pointer text-button text-error"
+                    onClick={() => {
+                        deleteAlert({
+                            variables: {
+                                alertId: props.alertId,
+                            },
+                        })
+                    }}
+                >
                     Delete
                 </p>
             </div>

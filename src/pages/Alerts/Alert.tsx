@@ -75,14 +75,7 @@ function Alert() {
     const pathParams = useParams()
     const alertId = (pathParams as any).alertId
 
-    const [getCompanyName, getCompanyNameQuery] = useLazyQuery(
-        GET_COMPANY_NAME,
-        {
-            onCompleted: (data) => {
-                console.log(data)
-            },
-        },
-    )
+    const [getCompanyName, getCompanyNameQuery] = useLazyQuery(GET_COMPANY_NAME)
 
     const getAlertQuery = useQuery(GET_ALERT, {
         variables: {
@@ -147,13 +140,6 @@ function Alert() {
                                 ? getCompanyNameQuery.data.searchCompanies[0]
                                       .ticker
                                 : getAlertQuery.data.getAlert.symbol.ticker
-                            console.log({
-                                alertId: alertId,
-                                ruleName: name,
-                                symbol: symbol,
-                                methods: { email: true },
-                                conditions: conditions,
-                            })
 
                             alertId != 'new'
                                 ? updateAlert({
@@ -250,7 +236,7 @@ function Condition(props: ConditionProps) {
         arg = reverseMetrics[arg]
         const type = metrics[arg].type
         const operator = type == 'number' ? '>' : '=='
-        const value = type == 'number' || type == 'string' ? '' : 'true'
+        const value = type == 'number' || type == 'string' ? 'we' : 'true'
         const condition = [arg, operator, value]
         const newConditions = [...props.conditions]
         newConditions[props.index] = condition
@@ -266,7 +252,9 @@ function Condition(props: ConditionProps) {
     }
 
     const changeValue = (arg: string | number) => {
-        arg = reverseOperators[arg]
+        if (typeof arg != 'number') {
+            arg = reverseOperators[arg]
+        }
         const condition = [props.metric, props.operator, arg]
         const newConditions = [...props.conditions]
         newConditions[props.index] = condition
