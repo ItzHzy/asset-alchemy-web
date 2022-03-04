@@ -4,12 +4,11 @@ import BasicLayout, { TitleBar } from '../layouts/BasicLayout'
 
 function Loading() {
     return (
-        <>
-            <TitleBar />
-            <div className="flex flex-col items-center h-full w-full pt-[200px]">
+        <BasicLayout>
+            <div className="flex w-full h-full pt-[200px] justify-center">
                 <ClipLoader color="#ffad5c" />
             </div>
-        </>
+        </BasicLayout>
     )
 }
 
