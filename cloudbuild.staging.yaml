@@ -24,4 +24,4 @@ steps:
           - 'us-central1'
           - '--allow-unauthenticated'
 images:
-    - 'gcr.io/$PROJECT_ID/asset-alchemy-web:$COMMIT_SHA'
+    - 'gcr.io/$PROJECT_ID/asset-alchemy-web-staging:$COMMIT_SHA'
