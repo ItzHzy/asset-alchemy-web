@@ -4,7 +4,7 @@ steps:
       args: ['install']
 
     - name: node
-      entrypoint: bash
+      entrypoint: npm
       args: ['run', 'build']
       env:
           - 'NODE_ENV=production'
