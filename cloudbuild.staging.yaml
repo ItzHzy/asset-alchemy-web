@@ -4,7 +4,7 @@ steps:
       args: ['install']
 
     - name: node
-      entrypoint: npm
+      entrypoint: bash
       args:
           - 'NODE_ENV=production'
           - 'PORT=8080'
@@ -14,6 +14,7 @@ steps:
           - 'SENTRY_DSN=https://01a22e4e2fba493c978d94e687513c50@o1138958.ingest.sentry.io/6194829'
           - 'AUTH0_REDIRECT_URI=https://staging.app.assetalchemy.io'
           - 'API_SERVER_URL=https://staging.api.assetalchemy.io'
+          - 'npm'
           - 'run'
           - 'build'
 
