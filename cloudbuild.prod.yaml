@@ -3,19 +3,6 @@ steps:
       entrypoint: npm
       args: ['install']
 
-    - name: node
-      entrypoint: node
-      args: ['run', 'build']
-      env:
-          - 'NODE_ENV=production'
-          - 'PORT=8080'
-          - 'AUTH0_API_IDENTIFIER=https://api.assetalchemy.io'
-          - 'AUTH0_DOMAIN=asset-alchemy.us.auth0.com'
-          - 'AUTH0_CLIENT_ID=KQM98rreQSVH9xiz57ywiryjT5O0gX5f'
-          - 'SENTRY_DSN=https://01a22e4e2fba493c978d94e687513c50@o1138958.ingest.sentry.io/6194829'
-          - 'AUTH0_REDIRECT_URI=https://app.assetalchemy.io'
-          - 'API_SERVER_URL=https://api.assetalchemy.io'
-
     - name: 'gcr.io/cloud-builders/gsutil'
       args: ['-m', 'rm', 'gs://app.assetalchemy.io/**']
 
