@@ -1,4 +1,6 @@
 import { gql, useLazyQuery, useMutation, useQuery } from '@apollo/client'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash as fasTrash } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Dropdown from '../../components/common/Dropdown'
@@ -261,9 +263,15 @@ function Condition(props: ConditionProps) {
         props.updateConditions(newConditions)
     }
 
+    const deleteCondition = (index: number) => {
+        const newConditions = [...props.conditions]
+        newConditions.splice(index, 1)
+        props.updateConditions(newConditions)
+    }
+
     return (
-        <div className="flex h-[40px] w-[650px] justify-between overflow-visible">
-            <div className="flex w-[250px] h-[40px]">
+        <div className="flex h-[40px] w-[650px] justify-between overflow-visible items-center">
+            <div className="flex w-[220px] h-[40px]">
                 <Dropdown
                     current={metrics[props.metric].label}
                     options={conditionsList.metrics}
@@ -363,6 +371,14 @@ function Condition(props: ConditionProps) {
                     )[metrics[props.metric].type]
                 }
             </div>
+            <FontAwesomeIcon
+                icon={fasTrash}
+                size={'2x'}
+                className="cursor-pointer text-error"
+                onClick={() => {
+                    deleteCondition(props.index)
+                }}
+            />
         </div>
     )
 }
